@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Journo: A responsive Journaling Web App - AI-Powered Fullstack application built on with Next.js, SQLite and Clerk
 
-## Getting Started
+This is a full-stack journaling application powered by AI for analyzing user mood and providing feedback based on journal entries. Built with Next.js, the app integrates the Gemini AI API to enhance user journaling experiences, provides robust authentication with Clerk, and features a remote SQLite database hosted on Turso/LibSQL. The application includes secure API implementations, follows middleware route protection principles, and is fully implemented in TypeScript.
 
-First, run the development server:
+## Features
+- AI-Powered Assistance: Leverages the Gemini AI API to analyze journal entries and provide mood-based feedback.
+- Authentication: User authentication is managed by Clerk, with sign-up, sign-in, and logout functionalities.
+- Middleware Route Protection: Ensures that certain pages are protected and accessible only to authenticated users.
+- SQLite Database: Utilizes Turso/LibSQL as the database solution, offering fast and remote storage for journal entries.
+- Responsive Design: Mobile-first design ensures that the app functions seamlessly across various device sizes.
+- Dashboard: Includes a mood tracker and journal entry dashboard, with intuitive UI elements like sliders for tracking mood, shown only once per day.
+- TypeScript Integration: The entire codebase is written in TypeScript for improved maintainability and type safety.
+- Next.js Routing: Utilizes Next.js App Router for efficient routing, along with API route implementations.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technologies Used
+Next.js: Full-stack framework for building the application.
+TypeScript: Strongly typed JavaScript used for all components.
+Clerk: For user authentication and secure session management.
+SQLite (LibSQL/Turso): Database management with remote storage and connection.
+Tailwind CSS: For responsive and modern UI design.
+Axios: For making API requests to Gemini AI and other internal services.
+Zod: Schema validation for mood entries and other input validation.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployed on: ()
