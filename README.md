@@ -21,4 +21,16 @@ Tailwind CSS: For responsive and modern UI design.
 Axios: For making API requests to Gemini AI and other internal services.
 Zod: Schema validation for mood entries and other input validation.
 
-## Deployed on: ()
+## Deployed on: (pending)
+
+![Landing Page Mobile](./public/assets/repoAssets/landingMobile.png)   ![Signin](./public/assets/repoAssets/signInMobile.png) 
+![Landing Page](./public/assets/repoAssets/landingFull.png) 
+![Signin](./public/assets/repoAssets/signInDesktop.png)
+![Home](./public/assets/repoAssets/homeDesktop.png)
+![Home](./public/assets/repoAssets/homeMobile.png) ![Mood Logger](./public/assets/repoAssets/logMoodMobile.png)
+![Mobile Journal Entry](./public/assets/repoAssets/entryMobile.png) ![Clerk Account Management](./public/assets/repoAssets/manageAccountClerk.png)
+![Entry & Ai Response](./public/assets/repoAssets/entry&responseDesktop.png)
+
+
+
+
