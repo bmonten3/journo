@@ -27,13 +27,13 @@ Gemini Ai API: API calls using Gemini API LLM's.
 
 ## Deployed on: (pending)
 
-![Landing Page Mobile](./public/assets/repoAssets/landingMobile.png) ![Signin](./public/assets/repoAssets/signInMobile.png)
-![Landing Page](./public/assets/repoAssets/landingFull.png)
-![Signin](./public/assets/repoAssets/signInDesktop.png)
-![Home](./public/assets/repoAssets/homeDesktop.png)
-![Home](./public/assets/repoAssets/homeMobile.png) ![Mood Logger](./public/assets/repoAssets/logMoodMobile.png)
-![Mobile Journal Entry](./public/assets/repoAssets/entryMobile.png) ![Clerk Account Management](./public/assets/repoAssets/manageAccountClerk.png)
-![Entry & Ai Response](./public/assets/repoAssets/entry&responseDesktop.png)
+![Landing Page Mobile](./public/assets/screenshots/landingMobile.png) ![Signin](./public/assets/screenshots/signInMobile.png)
+![Landing Page](./public/assets/screenshots/landingFull.png)
+![Signin](./public/assets/screenshots/signInDesktop.png)
+![Home](./public/assets/screenshots/homeDesktop.png)
+![Home](./public/assets/screenshots/homeMobile.png) ![Mood Logger](./public/assets/screenshots/logMoodMobile.png)
+![Mobile Journal Entry](./public/assets/screenshots/entryMobile.png) ![Clerk Account Management](./public/assets/screenshots/manageAccountClerk.png)
+![Entry & Ai Response](./public/assets/screenshots/entry&responseDesktop.png)
 
 # To run on local machine (non Docker option)
 
