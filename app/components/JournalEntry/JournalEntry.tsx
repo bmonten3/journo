@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { Pencil, Save, X } from 'lucide-react';
 import GeneratePrompt from '../Prompts/Prompts';
@@ -16,13 +16,16 @@ function JournalEntry({ setPrompt }: JournalEntryProps) {
   const [title, setTitle] = useState('Journal Entry Title');
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [generatedSuggestion, setGeneratedSuggestion] = useState('');
+  const [isEditingContent, setIsEditingContent] = useState(false); // Track content editing
   const router = useRouter();
-  // Create a reference for the textarea and the title input
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const titleInputRef = useRef<HTMLInputElement>(null);
 
   const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(event.target.value);
+    if (!isEditingContent) {
+      setIsEditingContent(true); // Mark content as being edited
+    }
   };
 
   const handleOnCancel = () => {
@@ -30,6 +33,7 @@ function JournalEntry({ setPrompt }: JournalEntryProps) {
     setTitle('Journal Entry Title');
     setIsEditingTitle(false);
     setGeneratedSuggestion('');
+    setIsEditingContent(false); // Reset content editing state
   };
 
   const handleOnSave = async () => {
@@ -45,17 +49,15 @@ function JournalEntry({ setPrompt }: JournalEntryProps) {
       style: {
         borderRadius: '10px',
         marginBottom: '1.4rem',
-        background: '#4B5563',
-        color: '#F3F4F6',
+        background: '#3f3f46',
+        color: '#d4d4d8',
       },
     });
     setIsEditingTitle(false);
 
     try {
       let result;
-
       result = await createJournalEntry(title, content);
-
       if (result) {
         console.log('journals updated!');
         router.replace('/dashboard');
@@ -70,77 +72,77 @@ function JournalEntry({ setPrompt }: JournalEntryProps) {
 
   const handleTitleEditClick = () => {
     setIsEditingTitle(true);
-    // Set a timeout to focus and select text in the title input
     setTimeout(() => {
       if (titleInputRef.current) {
         titleInputRef.current.focus();
-        titleInputRef.current.select(); // Select the input content
+        titleInputRef.current.select();
       }
     }, 0);
   };
 
+  // Only show the buttons when the user is editing content
+  const showButtons = isEditingContent || content !== ''; // If the content has changed or the user is editing
+
   return (
-    <div className="space-y-4 bg-gray-800 p-1 rounded-lg shadow-lg">
+    <div className="space-y-4 bg-zinc-800/30 p-6 rounded-xl shadow-xl border border-zinc-700/50 backdrop-blur-sm">
       <div className="flex justify-center items-center">
-        <h1 className="text-2xl text-indigo-300 font-bold flex justify-center items-center">
+        <h1 className="text-2xl text-emerald-400 font-bold flex justify-center items-center">
           {isEditingTitle ? (
             <input
-              ref={titleInputRef} // Attach the ref to the title input
+              ref={titleInputRef}
               name="title"
               type="text"
               value={title}
               onChange={(event) => setTitle(event.target.value)}
-              onBlur={() => setIsEditingTitle(false)} // Exit editing mode on blur
-              className="bg-transparent text-indigo-300 border-b border-indigo-500 focus:outline-none focus:ring-0"
+              onBlur={() => setIsEditingTitle(false)}
+              className="bg-transparent text-emerald-400 border-b border-emerald-500 focus:outline-none focus:ring-0"
               autoFocus
             />
           ) : (
-            <span onClick={handleTitleEditClick}>{title}</span> // Handle title edit click
+            <span onClick={handleTitleEditClick}>{title}</span>
           )}
           <Pencil
-            className="ml-3 cursor-pointer"
+            className="ml-3 cursor-pointer text-zinc-400 hover:text-emerald-500"
             size={24}
-            onClick={handleTitleEditClick} // Edit title on click
+            onClick={handleTitleEditClick}
           />
         </h1>
       </div>
       <div className="space-y-3">
         <GeneratePrompt setGeneratedSuggestion={setGeneratedSuggestion} />
         {generatedSuggestion && (
-          <p className="text-gray-400 text-center italic text-sm mt-2">
+          <p className="text-zinc-400 text-center italic text-sm mt-2">
             {generatedSuggestion}
           </p>
         )}
       </div>
       <textarea
         ref={textareaRef}
-        name="content" // Attach the ref to the textarea
+        name="content"
         value={content}
         onChange={handleInput}
         placeholder="Write your journal entry here..."
-        className="w-full h-64 px-4 py-2 rounded-md resize-none text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
-        style={{
-          border: 'none',
-          boxShadow: 'inset 0 1px 3px rgba(0, 0, 0, 0.1)',
-          backgroundColor: '#1F2937',
-        }}
+        className="w-full h-64 px-4 py-2 rounded-md resize-none text-zinc-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition duration-200 bg-zinc-900/80 border-none"
       />
-      <div className="flex justify-end space-x-4">
-        <button
-          className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition duration-200 flex items-center"
-          onClick={handleOnCancel}
-        >
-          <X className="mr-2" size={18} />
-          Cancel
-        </button>
-        <button
-          className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition duration-200 flex items-center"
-          onClick={handleOnSave}
-        >
-          <Save className="mr-2" size={18} />
-          Save
-        </button>
-      </div>
+      {/* Conditionally render buttons */}
+      {showButtons && (
+        <div className="flex justify-end space-x-4 mt-4">
+          <button
+            className="px-4 py-2 bg-red-600/80 text-white rounded-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition duration-200 flex items-center"
+            onClick={handleOnCancel}
+          >
+            <X className="mr-2" size={18} />
+            Cancel
+          </button>
+          <button
+            className="px-4 py-2 bg-emerald-600/80 text-white rounded-md hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50 transition duration-200 flex items-center"
+            onClick={handleOnSave}
+          >
+            <Save className="mr-2" size={18} />
+            Save
+          </button>
+        </div>
+      )}
     </div>
   );
 }

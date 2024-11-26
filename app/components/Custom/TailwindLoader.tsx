@@ -2,11 +2,11 @@ const TailWindLoader = () => {
   return (
     <div
       role="status"
-      className=" bg-gray-900 w-screen h-screen flex justify-center items-center"
+      className=" bg-zinc-900 w-screen h-screen flex justify-center items-center"
     >
       <svg
         aria-hidden="true"
-        className="w-28 h-28 animate-spin text-gray-600 fill-blue-600"
+        className="w-28 h-28 animate-spin text-gray-600 fill-green-600"
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

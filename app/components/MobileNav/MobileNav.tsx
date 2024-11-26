@@ -19,12 +19,12 @@ const MobileNav = () => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-gray-900 text-gray-100 flex justify-around p-4 shadow-lg">
-      <div className="flex flex-col items-center -mx-1">
+    <div className="fixed bottom-0 left-0 right-0 bg-zinc-800/60 text-zinc-100 flex justify-around p-4 shadow-2xl border-t border-zinc-700/50 backdrop-blur-sm">
+      <div className="flex flex-col items-center">
         <NavItem href="/dashboard" icon={<DashboardIcon />} text="Home" />
       </div>
       <div className="flex flex-col items-center">
-        <NavItem href="/journals" icon={<JournalIcon />} text=" History" />
+        <NavItem href="/journals" icon={<JournalIcon />} text="History" />
       </div>
       <div className="flex flex-col items-center">
         <NavItem href="/mood-metrics" icon={<GraphIcon />} text="Stats" />
@@ -36,10 +36,10 @@ const MobileNav = () => {
         <SignOutButton>
           <button
             onClick={handleOnClick}
-            className="flex items-center justify-center px-2 py-1 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+            className="flex flex-col items-center text-red-400 hover:text-red-500 transition-colors duration-300"
           >
             <LogoutIcon />
-            <span className="ml-1">Sign Out</span>
+            <span className="text-xs mt-1">Sign Out</span>
           </button>
         </SignOutButton>
       </div>
@@ -50,17 +50,17 @@ const MobileNav = () => {
 const NavItem: React.FC<NavItemProps> = ({ href, icon, text }) => (
   <a
     href={href}
-    className="flex flex-col items-center text-gray-400 hover:text-gray-200 transition-colors duration-300"
+    className="flex flex-col items-center text-zinc-400 hover:text-zinc-200 transition-colors duration-300"
   >
     {icon}
-    <span className="text-xs">{text}</span>
+    <span className="text-xs mt-1">{text}</span>
   </a>
 );
 
-// Icon components
+// Icon components remain the same as in the original file
 const DashboardIcon = () => (
   <svg
-    className="w-6 h-6"
+    className="w-5 h-5"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

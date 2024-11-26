@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app # Mounts the app code for live reload
+      - sqlite_data:/app/db.sqlite # Persist the SQLite database
+    environment:
+      DATABASE_URL: 'file:/app/db/db.sqlite'
+    command: npm run dev
+
+volumes:
+  sqlite_data: # Defines a named volume for the SQLite database

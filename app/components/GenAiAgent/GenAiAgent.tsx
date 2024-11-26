@@ -32,22 +32,22 @@ const GenAiAgent: React.FC<GenAiAgentProps> = ({ prompt }) => {
   }, [prompt]);
 
   return (
-    <div className="space-y-4 bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h1 className="text-2xl font-bold text-indigo-300 flex items-center">
-        <MessageSquare className="mr-2" size={24} />
+    <div className="bg-zinc-800/30 p-6 rounded-lg shadow-lg border border-zinc-700/50 backdrop-blur-sm">
+      <h1 className="text-xl font-semibold text-emerald-400 flex items-center gap-2">
+        <MessageSquare className="text-emerald-400" size={24} />
         I'm not a therapist but...
       </h1>
       {loading ? (
-        <div className="flex justify-center items-center py-8">
-          <Loader className="animate-spin text-indigo-500" size={32} />
+        <div className="flex justify-center items-center py-6">
+          <Loader className="animate-spin text-emerald-500" size={28} />
         </div>
       ) : response ? (
-        <div className="bg-gray-700 rounded-md p-4 shadow-inner">
-          <p className="text-gray-200 leading-relaxed">{response}</p>
+        <div className="bg-zinc-900 p-4 rounded-md shadow-inner border border-zinc-600 mt-4">
+          <p className="text-zinc-300">{response}</p>
         </div>
       ) : (
-        <p className="text-gray-400 italic">
-          Tell me about your day or mood, I'm all ears.
+        <p className="text-zinc-400 italic mt-4">
+          Tell me about your day or mood. I'm all ears.
         </p>
       )}
     </div>

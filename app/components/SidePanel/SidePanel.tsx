@@ -2,10 +2,11 @@ import { SignOutButton, useClerk, UserButton, useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 
 interface NavItemProps {
-  href?: any;
-  icon?: any;
-  text?: any;
+  href?: string;
+  icon?: React.ReactNode;
+  text?: string;
 }
+
 const SidePanel = () => {
   const { user } = useUser();
   const router = useRouter();
@@ -18,9 +19,18 @@ const SidePanel = () => {
   };
 
   return (
-    <aside className="flex flex-col h-full bg-gray-900 text-gray-100">
-      <div className="flex flex-col flex-grow overflow-y-auto">
-        <nav className="flex-grow">
+    <aside className="flex flex-col h-full bg-zinc-900 text-zinc-100">
+      <div className="p-4 border-b border-zinc-700/50">
+        <div className="flex items-center space-x-4">
+          <UserButton />
+          <span className="font-medium text-zinc-200 truncate">
+            {user?.username || 'User'}
+          </span>
+        </div>
+      </div>
+
+      <div className="flex flex-col flex-grow overflow-y-auto py-4">
+        <nav className="space-y-1">
           <NavItem href="/dashboard" icon={<DashboardIcon />} text="Home" />
           <NavItem
             href="/journals"
@@ -29,15 +39,21 @@ const SidePanel = () => {
           />
           <NavItem href="/stats" icon={<GraphIcon />} text="Stats" />
           <NavItem href="/goals" icon={<SettingsIcon />} text="Goals" />
-          <hr className="my-6 border-gray-700" />
-          <NavItem href="#" icon={<TicketIcon />} text="Resources" />
+
+          <div className="my-4 border-t border-zinc-700/50"></div>
+
+          <NavItem href="#" icon={<JournalIcon />} text="Resources" />
         </nav>
       </div>
-      <div className="p-4">
+
+      <div className="p-4 border-t border-zinc-700/50">
         <SignOutButton>
           <button
             onClick={handleOnClick}
-            className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+            className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium 
+            text-white bg-red-600/80 rounded-md hover:bg-red-700 
+            transition duration-300 ease-in-out transform hover:scale-105 
+            focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
           >
             <LogoutIcon />
             <span className="ml-2">Sign Out</span>
@@ -51,14 +67,17 @@ const SidePanel = () => {
 const NavItem: React.FC<NavItemProps> = ({ href, icon, text }) => (
   <a
     href={href}
-    className="flex items-center px-4 py-2 text-gray-400 hover:bg-gray-800 hover:text-gray-200 transition-colors duration-300 rounded-md"
+    className="flex items-center px-4 py-2 text-zinc-400 
+    hover:bg-zinc-800 hover:text-zinc-200 
+    transition-colors duration-300 rounded-md 
+    group"
   >
-    {icon}
-    <span className="mx-4 font-medium">{text}</span>
+    <span className="mr-4 group-hover:text-zinc-100">{icon}</span>
+    <span className="font-medium">{text}</span>
   </a>
 );
 
-// Icon components
+// Icon components remain the same as in the previous implementation
 const DashboardIcon = () => (
   <svg
     className="w-5 h-5"
@@ -78,7 +97,7 @@ const DashboardIcon = () => (
 
 const JournalIcon = () => (
   <svg
-    className="w-5 h-5"
+    className="w-6 h-6"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +121,7 @@ const JournalIcon = () => (
 
 const GraphIcon = () => (
   <svg
-    className="w-5 h-5"
+    className="w-6 h-6"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +138,7 @@ const GraphIcon = () => (
 
 const SettingsIcon = () => (
   <svg
-    className="w-5 h-5"
+    className="w-6 h-6"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -141,15 +160,15 @@ const SettingsIcon = () => (
   </svg>
 );
 
-const TicketIcon = () => (
+const LogoutIcon = () => (
   <svg
-    className="w-5 h-5"
+    className="w-6 h-6"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M15 5V7M15 11V13M15 17V19M5 5C3.89543 5 3 5.89543 3 7V10C4.10457 10 5 10.8954 5 12C5 13.1046 4.10457 14 3 14V17C3 18.1046 3.89543 19 5 19H19C20.1046 19 21 18.1046 21 17V14C19.8954 14 19 13.1046 19 12C19 10.8954 19.8954 10 21 10V7C21 5.89543 20.1046 5 19 5H5Z"
+      d="M10 17L15 12L10 7M21 12H10M3 6H7C8.10457 6 9 6.89543 9 8V16C9 17.1046 8.10457 18 7 18H3"
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
@@ -157,19 +176,4 @@ const TicketIcon = () => (
     />
   </svg>
 );
-
-const LogoutIcon = () => (
-  <svg
-    className="w-5 h-5"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M15 3V5H17C18.1046 5 19 5.89543 19 7V17C19 18.1046 18.1046 19 17 19H15V21H17C19.2091 21 21 19.2091 21 17V7C21 4.79086 19.2091 3 17 3H15ZM9 3H11V5H9C7.89543 5 7 5.89543 7 7V17C7 18.1046 7.89543 19 9 19H11V21H9C7.79086 21 6.5 20.2091 6.5 19V5C6.5 3.79086 7.79086 3 9 3Z"
-      fill="currentColor"
-    />
-  </svg>
-);
-
 export default SidePanel;
