@@ -27,14 +27,6 @@ Gemini Ai API: API calls using Gemini API LLM's.
 
 ## Deployed on: (pending)
 
-![Landing Page Mobile](./public/assets/repoAssets/landingMobile.png) ![Signin](./public/assets/repoAssets/signInMobile.png)
-![Landing Page](./public/assets/repoAssets/landingFull.png)
-![Signin](./public/assets/repoAssets/signInDesktop.png)
-![Home](./public/assets/repoAssets/homeDesktop.png)
-![Home](./public/assets/repoAssets/homeMobile.png) ![Mood Logger](./public/assets/repoAssets/logMoodMobile.png)
-![Mobile Journal Entry](./public/assets/repoAssets/entryMobile.png) ![Clerk Account Management](./public/assets/repoAssets/manageAccountClerk.png)
-![Entry & Ai Response](./public/assets/repoAssets/entry&responseDesktop.png)
-
 # To run on local machine (non Docker option)
 
 set up a .env.local file with the following credentials
@@ -49,3 +41,12 @@ NEXT_PUBLIC_CLERK_FRONTEND_API=
 
 NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/dashboard
 NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=/dashboard
+
+![Landing Page Mobile](./public/assets/repoAssets/landingMobile.png) ![Signin](./public/assets/repoAssets/signInMobile.png)
+![Landing Page](./public/assets/repoAssets/landingFull.png)
+![Signin](./public/assets/repoAssets/signInDesktop.png)
+![Home](./public/assets/repoAssets/homeDesktop.png)
+![Home](./public/assets/repoAssets/homeMobile.png) ![Mood Logger](./public/assets/repoAssets/logMoodMobile.png)
+![Mobile Journal Entry](./public/assets/repoAssets/entryMobile.png) ![Clerk Account Management](./public/assets/repoAssets/manageAccountClerk.png)
+![Entry & Ai Response](./public/assets/repoAssets/entry&responseDesktop.png)
+
